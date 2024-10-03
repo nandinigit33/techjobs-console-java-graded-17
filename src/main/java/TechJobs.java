@@ -133,17 +133,17 @@ public class TechJobs {
         Iterator<HashMap<String, String>> iterator = someJobs.iterator();
         if (iterator.hasNext()) {
             while (iterator.hasNext()) {
-                System.out.println("*****"); // Separator between HashMaps
+                System.out.println("\n*****"); // Separator between HashMaps
                 HashMap<String, String> map = iterator.next();
 
                 // Iterate over the key-value pairs in the HashMap
                 for (Map.Entry<String, String> entry : map.entrySet()) {
                     System.out.println(entry.getKey() + ": " + entry.getValue());
                 }
-                System.out.println("*****\n"); // Separator between HashMaps
+                System.out.println("*****"); // Separator between HashMaps
             }
         }else {
-                System.out.println("No Results"); // Separator between HashMaps
+                System.out.print("No Results"); // Separator between HashMaps
             }
         }
     }
