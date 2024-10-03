@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -10,7 +7,7 @@ public class TechJobs {
 
     static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -62,9 +59,11 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not implemented yet.");
+                    //System.out.println("Search all fields not implemented yet.");
+                    printJobs(JobData.findByValue(searchTerm));
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+
                 }
             }
         }
@@ -112,7 +111,7 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
@@ -120,6 +119,32 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        // Iterate over the ArrayList of HashMaps
+//        for (HashMap<String, String> map : someJobs) {
+//            System.out.println("*****"); // Separator between HashMaps
+//            // Iterate over each entry in the HashMap
+//            for (Map.Entry<String, String> entry : map.entrySet()) {
+//                System.out.println(entry.getKey() + ": " + entry.getValue());
+//            }
+//            System.out.println("*****\n"); // Separator between HashMaps
+//        }
+
+        // Iterate over the ArrayList using an Iterator
+        Iterator<HashMap<String, String>> iterator = someJobs.iterator();
+        if (iterator.hasNext()) {
+            while (iterator.hasNext()) {
+                System.out.println("*****"); // Separator between HashMaps
+                HashMap<String, String> map = iterator.next();
+
+                // Iterate over the key-value pairs in the HashMap
+                for (Map.Entry<String, String> entry : map.entrySet()) {
+                    System.out.println(entry.getKey() + ": " + entry.getValue());
+                }
+                System.out.println("*****\n"); // Separator between HashMaps
+            }
+        }else {
+                System.out.println("No Results"); // Separator between HashMaps
+            }
+        }
     }
-}
+
